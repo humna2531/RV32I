@@ -1,0 +1,191 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00FEE680 .scope module, "alu_tb" "alu_tb" 2 1;
+ .timescale 0 0;
+v00FE4B68_0 .var "A", 31 0;
+v00FE4BC0_0 .var "B", 31 0;
+v00FE4C18_0 .var "Data_sel", 3 0;
+v00FE1688_0 .net "res", 31 0, v00FE8188_0; 1 drivers
+S_00FEDC68 .scope module, "test" "alu_design" 2 7, 3 2, S_00FEE680;
+ .timescale 0 0;
+v00FED998_0 .net "A", 31 0, v00FE4B68_0; 1 drivers
+v00FEEF40_0 .net "B", 31 0, v00FE4BC0_0; 1 drivers
+v00FE8130_0 .net "Data_sel", 3 0, v00FE4C18_0; 1 drivers
+v00FE8188_0 .var "res", 31 0;
+E_00FEBD08 .event edge, v00FE8130_0, v00FED998_0, v00FEEF40_0;
+    .scope S_00FEDC68;
+T_0 ;
+    %wait E_00FEBD08;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 0, 4;
+    %jmp/0xz  T_0.0, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 32;
+    %add 8, 40, 32;
+    %set/v v00FE8188_0, 8, 32;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 1, 4;
+    %jmp/0xz  T_0.2, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 32;
+    %sub 8, 40, 32;
+    %set/v v00FE8188_0, 8, 32;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 2, 4;
+    %jmp/0xz  T_0.4, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 32;
+    %and 8, 40, 32;
+    %set/v v00FE8188_0, 8, 32;
+    %jmp T_0.5;
+T_0.4 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 3, 4;
+    %jmp/0xz  T_0.6, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 32;
+    %or 8, 40, 32;
+    %set/v v00FE8188_0, 8, 32;
+    %jmp T_0.7;
+T_0.6 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 4, 4;
+    %jmp/0xz  T_0.8, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 32;
+    %xor 8, 40, 32;
+    %set/v v00FE8188_0, 8, 32;
+    %jmp T_0.9;
+T_0.8 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 5, 4;
+    %jmp/0xz  T_0.10, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 5; Only need 5 of 32 bits
+; Save base=40 wid=5 in lookaside.
+    %ix/get 0, 40, 5;
+    %shiftl/i0  8, 32;
+    %set/v v00FE8188_0, 8, 32;
+    %jmp T_0.11;
+T_0.10 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 6, 4;
+    %jmp/0xz  T_0.12, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 5; Only need 5 of 32 bits
+; Save base=40 wid=5 in lookaside.
+    %ix/get 0, 40, 5;
+    %shiftr/i0  8, 32;
+    %set/v v00FE8188_0, 8, 32;
+    %jmp T_0.13;
+T_0.12 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 7, 4;
+    %jmp/0xz  T_0.14, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 32;
+    %cmp/u 8, 40, 32;
+    %mov 8, 5, 1;
+    %jmp/0  T_0.16, 8;
+    %movi 9, 1, 32;
+    %jmp/1  T_0.18, 8;
+T_0.16 ; End of true expr.
+    %jmp/0  T_0.17, 8;
+ ; End of false expr.
+    %blend  9, 0, 32; Condition unknown.
+    %jmp  T_0.18;
+T_0.17 ;
+    %mov 9, 0, 32; Return false value
+T_0.18 ;
+    %set/v v00FE8188_0, 9, 32;
+    %jmp T_0.15;
+T_0.14 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 8, 4;
+    %jmp/0xz  T_0.19, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 32;
+    %cmp/u 8, 40, 32;
+    %mov 8, 5, 1;
+    %jmp/0  T_0.21, 8;
+    %movi 9, 1, 32;
+    %jmp/1  T_0.23, 8;
+T_0.21 ; End of true expr.
+    %jmp/0  T_0.22, 8;
+ ; End of false expr.
+    %blend  9, 0, 32; Condition unknown.
+    %jmp  T_0.23;
+T_0.22 ;
+    %mov 9, 0, 32; Return false value
+T_0.23 ;
+    %set/v v00FE8188_0, 9, 32;
+    %jmp T_0.20;
+T_0.19 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 9, 4;
+    %jmp/0xz  T_0.24, 4;
+    %load/v 8, v00FED998_0, 32;
+    %load/v 40, v00FEEF40_0, 5; Only need 5 of 32 bits
+; Save base=40 wid=5 in lookaside.
+    %ix/get 0, 40, 5;
+    %shiftr/i0  8, 32;
+    %set/v v00FE8188_0, 8, 32;
+    %jmp T_0.25;
+T_0.24 ;
+    %load/v 8, v00FE8130_0, 4;
+    %cmpi/u 8, 15, 4;
+    %jmp/0xz  T_0.26, 4;
+    %load/v 8, v00FED998_0, 32;
+    %set/v v00FE8188_0, 8, 32;
+T_0.26 ;
+T_0.25 ;
+T_0.20 ;
+T_0.15 ;
+T_0.13 ;
+T_0.11 ;
+T_0.9 ;
+T_0.7 ;
+T_0.5 ;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_00FEE680;
+T_1 ;
+    %movi 8, 2, 32;
+    %set/v v00FE4B68_0, 8, 32;
+    %set/v v00FE4BC0_0, 1, 32;
+    %movi 8, 3, 4;
+    %set/v v00FE4C18_0, 8, 4;
+    %delay 2, 0;
+    %delay 2, 0;
+    %movi 8, 2, 32;
+    %set/v v00FE4B68_0, 8, 32;
+    %set/v v00FE4BC0_0, 1, 32;
+    %movi 8, 1, 4;
+    %set/v v00FE4C18_0, 8, 4;
+    %delay 2, 0;
+    %delay 2, 0;
+    %vpi_call 2 25 "$finish";
+    %end;
+    .thread T_1;
+    .scope S_00FEE680;
+T_2 ;
+    %vpi_call 2 29 "$dumpfile", "alu.vcd";
+    %vpi_call 2 30 "$dumpvars", 1'sb0, S_00FEE680;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "alu_tb.v";
+    "alu_design.v";

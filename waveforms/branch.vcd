@@ -1,0 +1,52 @@
+$date
+	Fri Sep 08 21:31:33 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module branch_tb $end
+$var wire 1 ! res $end
+$var reg 32 " A [31:0] $end
+$var reg 32 # B [31:0] $end
+$var reg 1 $ enb $end
+$var reg 3 % fun3 [2:0] $end
+$scope module test $end
+$var wire 32 & A [31:0] $end
+$var wire 32 ' B [31:0] $end
+$var wire 1 ( enb $end
+$var wire 3 ) fun3 [2:0] $end
+$var reg 1 * res $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1*
+b0 )
+1(
+b0 '
+b0 &
+b0 %
+1$
+b0 #
+b0 "
+1!
+$end
+#1
+b1100 #
+b1100 '
+b100101000001010010011 "
+b100101000001010010011 &
+b1 %
+b1 )
+#3
+0*
+0!
+b110001100 #
+b110001100 '
+b10 %
+b10 )
+#4

@@ -33,51 +33,51 @@ module control_unit (
             next_sel= 2'b00;
         if (func3==3'b000)begin 
               if (!func7)
-                assign ALU_C=4'b0000;
+                 ALU_C=4'b0000;
               else 
-                assign ALU_C=4'b0001;
+                 ALU_C=4'b0001;
         end
         else if (func3==3'b001) begin
               if (!func7)
-               assign ALU_C=4'b0101;
+                ALU_C=4'b0101;
              else 
-               assign ALU_C=4'b1110;
+                ALU_C=4'b1110;
         end
         else if (func3==3'b010)begin 
           if (!func7)
-            assign ALU_C=4'b0111;
+             ALU_C=4'b0111;
           else 
-            assign ALU_C=4'b0111;
+             ALU_C=4'b0111;
         end
         else if (func3==3'b011) begin
           if (!func7)
-            assign ALU_C=4'b1000;
+             ALU_C=4'b1000;
           else 
-            assign ALU_C=4'b1000;
+             ALU_C=4'b1000;
         end
         else if (func3==3'b100)begin 
           if (!func7)
-            assign ALU_C=4'b0100;
+             ALU_C=4'b0100;
           else 
-            assign ALU_C=4'b1110;
+             ALU_C=4'b1110;
         end
         else if (func3==3'b101)begin
           if (!func7)
-            assign ALU_C=4'b0110;
+             ALU_C=4'b0110;
           else 
-            assign ALU_C=4'b1001;
+            ALU_C=4'b1001;
         end
         else if (func3==3'b110)begin 
           if (!func7)
-            assign ALU_C=4'b0011;
+            ALU_C=4'b0011;
           else 
-            assign ALU_C=4'b1110;
+             ALU_C=4'b1110;
         end
         else if (func3==3'b111) begin
           if (!func7)
-            assign ALU_C=4'b0010;
+            ALU_C=4'b0010;
           else 
-            assign ALU_C=4'b1110;
+            ALU_C=4'b1110;
         end
         end
         I_type:begin
@@ -108,9 +108,9 @@ module control_unit (
         end 
         else if (func3==3'b101) begin
           if (!func7)
-            assign ALU_C=4'b0110;
+             ALU_C=4'b0110;
           else 
-            assign ALU_C=4'b1001;
+            ALU_C=4'b1001;
         end
           else if (func3==3'b110) begin
             ALU_C=4'b0011;

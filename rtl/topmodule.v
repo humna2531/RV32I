@@ -4,7 +4,7 @@
 `include "reg_file.v"
 `include "branch.v"
 `include "inst_mem.v"
-`include "data_mem.v"
+`include "data_mem.sv"
 module topmodule(
     input wire clk,
     input wire reset,

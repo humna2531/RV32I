@@ -1,4 +1,4 @@
-module data_memory (
+module data_mem(
     input wire         clk,
     input wire [11:0]  addr,
     input wire [31:0]  data,

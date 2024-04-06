@@ -3,7 +3,7 @@ module data_mem(
     input wire [11:0]  addr,
     input wire [31:0]  data,
     input wire         wr,
-    input wire [3:0]   masked,
+    input wire [1:0]   masked,
     output wire [31:0]  r_data   
 ); 
     reg [31:0] mem [0:255];

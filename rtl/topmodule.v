@@ -3,7 +3,7 @@
 `include "imm_gen.v"
 `include "reg_file.v"
 `include "branch.v"
-`include "inst_mem.v"
+`include "inst_mem.sv"
 `include "data_mem.sv"
 module topmodule(
     input wire clk,
